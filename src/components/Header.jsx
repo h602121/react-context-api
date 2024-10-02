@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LoginContext, ThemeContext } from "../App";
 
 export default function Header() {
@@ -11,9 +11,13 @@ export default function Header() {
       setTheme("dark");
     }
   };
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleButtonClick = () => {
-    console.log("CLICK!");
+    localStorage.clear();
+    setTheme("light");
   };
 
   return (
